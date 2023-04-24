@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import PropTypes from 'prop-types';
-import { selectIsLoading, selectFollow } from "redux/selectors";
+import { selectFollow } from "redux/selectors";
 import { FollowButton } from "components/FollowButton/FollowButton";
 import { styles } from "./UserCard.styled";
 import Logo from "images/logo.png";
@@ -11,7 +11,7 @@ const { Card, ContentWrapper, BgImage, Avatar, InfoList, ListItem, LogoWrapper, 
 
 export const UserCard = ({ userData }) => {
     // const isLoading = useSelector(selectIsLoading);
-    const { user, tweets, avatar, id, followers } = userData;
+    const { tweets, avatar, id, followers } = userData;
     const following = useSelector(selectFollow);
     const isFollowing = following.find(user => user.id === id);
 
