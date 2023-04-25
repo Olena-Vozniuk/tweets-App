@@ -7,6 +7,7 @@ import SharedLayout from "./SharedLayout/SharedLayout";
 const Home = lazy(() => import('pages/Home'));
 const Tweets = lazy(() => import('pages/tweets'));
 
+
 export const App = () => {
     // const isLoading = useSelector(selectIsLoading);
     // const error = useSelector(selectError);
