@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-    <BrowserRouter basename='/Olena-Vozniuk/tweets-App'>
+    <BrowserRouter basename='/tweets-App'>
        <App />
         </BrowserRouter>
         </PersistGate>
