@@ -3,14 +3,15 @@ import styled from 'styled-components';
 export const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 25px;
   justify-content: center;
-  margin-bottom: 35px;
+  margin-bottom: 20px;
 `;
 
 export const Wrapper = styled.div`
-margin-top: 100px;
+margin-top: 50px;
 padding: 16px;
+padding-bottom: 50px;
 `;
 
 export const NoTweets = styled.p`

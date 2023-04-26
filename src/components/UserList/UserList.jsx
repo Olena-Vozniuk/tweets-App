@@ -1,16 +1,20 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "redux/operations";
-import { selectUsers } from "redux/selectors";
+import { selectUsers, selectError, selectIsLoading  } from "redux/selectors";
 import { UserCard } from "components/UserCard/UserCard";
 import { LoadMoreButton } from "components/LoadMoreButton/LoadMoreButton";
+import { Loader } from "components/Loader/Loader";
 import { List, Wrapper, NoTweets } from "./UserList.styled";
+import oops from '../../images/Oops.jpg';
 
 
 export const UserList = () => {
     const dispatch = useDispatch();
     const users = useSelector(selectUsers);
     const [itemsToShow, setItemsToShow] = useState(3);
+    const isLoading = useSelector(selectIsLoading);
+    const error = useSelector(selectError);
 
     useEffect(() => {
         dispatch(fetchUsers())
@@ -24,6 +28,15 @@ export const UserList = () => {
 
     return (
         <Wrapper>
+            {isLoading && <Loader />}
+            {error ? <div style={{
+                color: 'red',
+                textAlign: 'center',
+                height: 'calc(100vh - 280px)'
+            }}>
+                {error}
+                <img src={oops} alt="oops" style={{paddingTop: '30px'}}/>
+            </div> : 
             <List>
                 {VisibleItems.map(user => (
                     <UserCard
@@ -31,8 +44,11 @@ export const UserList = () => {
                         userData={user} />
                 ))}
             </List>
-            {VisibleItems.length !== users.length && <LoadMoreButton onClick={handleLoadMore} />}
-            {VisibleItems.length === users.length && <NoTweets>No more tweets to load</NoTweets>}
+            }        
+            {VisibleItems.length !== users.length && !isLoading && !error &&
+                <LoadMoreButton onClick={handleLoadMore} />}
+            {VisibleItems.length === users.length && !isLoading && !error &&
+                <NoTweets>No more tweets to load</NoTweets>}
         </Wrapper>
     )
 };

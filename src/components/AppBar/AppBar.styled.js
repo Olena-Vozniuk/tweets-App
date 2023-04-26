@@ -10,7 +10,7 @@ display: flex;
 align-items: center;
 background: #5736A3;
 width: 100%;
-height: 100px;
+height: 80px;
 gap: 15px;
 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 `;
